@@ -1,6 +1,6 @@
-package co.antony.springbootproject.api.v1.user.repository;
+package co.antony.springbootproject.api.v1.student.repository;
 
-import co.antony.springbootproject.api.v1.user.model.Student;
+import co.antony.springbootproject.api.v1.student.model.Student;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Repository
-public class StudentRepository {
+public class InMemoryDatabase {
     public List<Student> students = new ArrayList<>(
             List.of(
                     new Student(

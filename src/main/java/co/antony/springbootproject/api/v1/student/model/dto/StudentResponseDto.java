@@ -1,4 +1,4 @@
-package co.antony.springbootproject.api.v1.user.model.dto;
+package co.antony.springbootproject.api.v1.student.model.dto;
 
 import lombok.Builder;
 

@@ -1,4 +1,4 @@
-package co.antony.springbootproject.api.v1.user.model;
+package co.antony.springbootproject.api.v1.student.model;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

@@ -1,11 +1,11 @@
-package co.antony.springbootproject.api.v1.user.service;
+package co.antony.springbootproject.api.v1.student.service;
 
-import co.antony.springbootproject.api.v1.user.mapper.StudentMapper;
-import co.antony.springbootproject.api.v1.user.model.Student;
-import co.antony.springbootproject.api.v1.user.model.dto.CreateStudentDto;
-import co.antony.springbootproject.api.v1.user.model.dto.UpdateStudentDto;
-import co.antony.springbootproject.api.v1.user.model.dto.StudentResponseDto;
-import co.antony.springbootproject.api.v1.user.repository.StudentRepository;
+import co.antony.springbootproject.api.v1.student.mapper.StudentMapper;
+import co.antony.springbootproject.api.v1.student.model.Student;
+import co.antony.springbootproject.api.v1.student.model.dto.CreateStudentDto;
+import co.antony.springbootproject.api.v1.student.model.dto.UpdateStudentDto;
+import co.antony.springbootproject.api.v1.student.model.dto.StudentResponseDto;
+import co.antony.springbootproject.api.v1.student.repository.InMemoryDatabase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,13 +15,13 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class StudentServiceImpl implements StudentService {
-    private final StudentRepository studentRepository;
+    private final InMemoryDatabase inMemoryDatabase;
     private final StudentMapper studentMapper;
 
     @Override
     public List<StudentResponseDto> getAllStudents() {
         List<StudentResponseDto> studentResponseDto = new ArrayList<>();
-        studentRepository.students.forEach(e -> {
+        inMemoryDatabase.students.forEach(e -> {
             studentResponseDto.add(studentMapper.mapFromStudentToStudentResponseDto(e));
         });
         return studentResponseDto;
@@ -30,13 +30,13 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public StudentResponseDto createNewStudent(CreateStudentDto createStudentDto) {
         Student newStudent = studentMapper.mapFromCreatestudentTostudent(createStudentDto);
-        studentRepository.students.add(newStudent);
+        inMemoryDatabase.students.add(newStudent);
         return studentMapper.mapFromStudentToStudentResponseDto(newStudent);
     }
 
     @Override
     public StudentResponseDto updateStudentByUuid(String uuid, UpdateStudentDto updateStudentDto) {
-        Student student = studentRepository.students.stream()
+        Student student = inMemoryDatabase.students.stream()
                 .filter(e -> e.getUuid().equals(uuid))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Student not found"));
@@ -59,12 +59,12 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public Integer deleteStudentByUuid(String uuid) {
-        Student student = studentRepository.students.stream()
+        Student student = inMemoryDatabase.students.stream()
                 .filter(e -> e.getUuid().equals(uuid))
                 .findFirst()
                 .orElseThrow(() -> new RuntimeException("Student not found"));
         if (student != null) {
-            studentRepository.students.remove(student);
+            inMemoryDatabase.students.remove(student);
             return 1;
         }
         return 0;

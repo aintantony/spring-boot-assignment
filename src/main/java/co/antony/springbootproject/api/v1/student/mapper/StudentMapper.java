@@ -1,8 +1,8 @@
-package co.antony.springbootproject.api.v1.user.mapper;
+package co.antony.springbootproject.api.v1.student.mapper;
 
-import co.antony.springbootproject.api.v1.user.model.Student;
-import co.antony.springbootproject.api.v1.user.model.dto.CreateStudentDto;
-import co.antony.springbootproject.api.v1.user.model.dto.StudentResponseDto;
+import co.antony.springbootproject.api.v1.student.model.Student;
+import co.antony.springbootproject.api.v1.student.model.dto.CreateStudentDto;
+import co.antony.springbootproject.api.v1.student.model.dto.StudentResponseDto;
 import org.springframework.stereotype.Component;
 
 import java.util.Random;
