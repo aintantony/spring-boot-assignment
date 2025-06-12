@@ -6,6 +6,8 @@ import lombok.Builder;
 public record CreateStudentDto(
         String name,
         String email,
+        String gender,
+        Double score,
         String password
 ) {
 }

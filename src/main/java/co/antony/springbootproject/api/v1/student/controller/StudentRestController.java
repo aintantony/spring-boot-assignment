@@ -1,6 +1,5 @@
 package co.antony.springbootproject.api.v1.student.controller;
 
-
 import co.antony.springbootproject.api.v1.student.model.dto.CreateStudentDto;
 import co.antony.springbootproject.api.v1.student.model.dto.UpdateStudentDto;
 import co.antony.springbootproject.api.v1.student.model.dto.StudentResponseDto;

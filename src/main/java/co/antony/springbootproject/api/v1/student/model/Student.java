@@ -16,6 +16,8 @@ public class Student {
     private String uuid;
     private String name;
     private String email;
+    private String gender;
+    private Double score;
     private String password;
     private String profile;
     private String bio;

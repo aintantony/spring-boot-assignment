@@ -15,6 +15,8 @@ public class StudentMapper {
                 .uuid(student.getUuid())
                 .name(student.getName())
                 .email(student.getEmail())
+                .gender(student.getGender())
+                .score(student.getScore())
                 .profile(student.getProfile())
                 .bio(student.getBio())
                 .isDeleted(student.getIsDeleted())
@@ -23,6 +25,6 @@ public class StudentMapper {
     }
 
     public Student mapFromCreatestudentTostudent(CreateStudentDto cr) {
-        return new Student(new Random().nextInt(999999), UUID.randomUUID().toString(), cr.name(), cr.email(), cr.password(), "", "", false, true);
+        return new Student(new Random().nextInt(999999), UUID.randomUUID().toString(), cr.name(), cr.email(), cr.gender(), cr.score(), cr.password(), "", "", false, true);
     }
 }

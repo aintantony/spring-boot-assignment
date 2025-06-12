@@ -7,6 +7,8 @@ public record StudentResponseDto(
         String uuid,
         String name,
         String email,
+        String gender,
+        Double score,
         String profile,
         String bio,
         Boolean isDeleted,
